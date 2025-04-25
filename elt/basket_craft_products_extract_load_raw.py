@@ -24,7 +24,7 @@ pg_host ='isba-dev-02.cxcoakgsc7ha.us-east-1.rds.amazonaws.com'
 pg_db ='basket_craft'
 # %%
 # Build connection strings
-mysql_conn_str = f'mysql+pymysql://{mysql_user}:{mysql_password}:@{mysql_host}/{mysql_db}'
+mysql_conn_str = f'mysql+pymysql://{mysql_user}:{mysql_password}@{mysql_host}/{mysql_db}'
 # pg_conn_str = f'postgresql+psycopg2://{pg_user}:{pg_password}@{pg_host}/{pg_db}'
 # %%
 # Create database engines
