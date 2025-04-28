@@ -1,4 +1,4 @@
-sqlachemy
+sqlalchemy
 pandas
 pymysql
 psycopg2-binary
