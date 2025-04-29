@@ -5,7 +5,7 @@ WITH raw_orders AS (
 stg_orders AS (
     SELECT
         order_id,
-        created_at,
+        created_at AS order_date,
         website_session_id,
         user_id,
         primary_product_id,
