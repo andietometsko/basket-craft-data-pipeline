@@ -47,9 +47,15 @@ df = pd.read_sql('SELECT * FROM products', mysql_engine)
 # %%
 # df
 
-# %%
+#%%
 # Write DataFrame to products table in Postgres (raw schema)
-df.to_sql('products', pg_engine, schema='raw', if_exists='replace', index=False)
+# Clear the products table in Postgres before loading new data
+from sqlalchemy import text
+with pg_engine.begin() as conn:
+    conn.execute(text("TRUNCATE TABLE raw.products;"))
+
+df.to_sql('products', pg_engine, schema='raw', if_exists='append', index=False)
+
 
 # %%
 print(f'{len(df)} records loaded into Postgres products table.')
