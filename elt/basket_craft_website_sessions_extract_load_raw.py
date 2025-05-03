@@ -39,5 +39,9 @@ pg_engine = create_engine(
 )
 # %%
 # Load into schema.table: raw.website_sessions
-df.to_sql("website_sessions", pg_engine, schema="raw", if_exists="replace", index=False)
-# %%
+from sqlalchemy import text
+
+with pg_engine.begin() as conn:
+    conn.execute(text("TRUNCATE TABLE raw.website_sessions;"))
+
+df.to_sql("website_sessions", pg_engine, schema="raw", if_exists="append", index=False)# %%
